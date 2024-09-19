@@ -139,18 +139,6 @@ if __name__ == "__main__":
         type=Path,
     )
     parser.add_argument(
-        "sample_size",
-        metavar="sample-size",
-        help="number of embeddings to sample (-1 to sample all available data).",
-        type=int,
-    )
-    parser.add_argument(
-        "--wav_format",
-        help="extension of the audio waveform files (defaults to .flac).",
-        default=".flac",
-        type=str,
-    )
-    parser.add_argument(
         "load_landmarks",
         help="root landmark directory to load landmarks.",
         default=None,
@@ -161,6 +149,19 @@ if __name__ == "__main__":
         help="root directory to save word boundaries.",
         default=None,
         type=Path,
+    )
+    parser.add_argument(
+        "--extension",
+        help="extension of the audio waveform files (defaults to .flac).",
+        default=".flac",
+        type=str,
+    )
+    parser.add_argument(
+        "--sample_size",
+        metavar="sample-size",
+        help="number of features to sample (-1 to sample all available data).",
+        default=-1,
+        type=int,
     )
     parser.add_argument(
         "--speaker",
@@ -181,7 +182,7 @@ if __name__ == "__main__":
     np.random.seed(42)
 
     # ~~~~~~~~~~ Setup data ~~~~~~~~~~
-    data = data_process.Features(wav_dir=args.wav_dir, root_dir=args.embeddings_dir, model_name=args.model, layer=args.layer, data_dir=args.alignments_dir, wav_format=args.wav_format, alignment_format=args.align_format, num_files=args.sample_size, frames_per_ms=frame_len)
+    data = data_process.Features(wav_dir=args.wav_dir, root_dir=args.embeddings_dir, model_name=args.model, layer=args.layer, data_dir=args.alignments_dir, extension=args.extension, alignment_format=args.align_format, num_files=args.sample_size, frames_per_ms=frame_len)
 
     if args.speaker is not None:
         speakerlist = data.get_speakers(args.speaker)
