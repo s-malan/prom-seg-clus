@@ -9,7 +9,6 @@ Date: 2021, April 2024
 import numpy as np
 import scipy.signal as signal
 
-# here we downsample the MFCC or HuBERT embeddings to have a constant size for each segment
 def downsample_utterance(features, segment, n):
     """
     Return the downsampled matrix with each row an embedding for a segment in
