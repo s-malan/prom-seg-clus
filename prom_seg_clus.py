@@ -118,8 +118,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Clustering prominence-segmented speech.")
     parser.add_argument(
         "model",
-        help="available models (MFCCs)",
-        choices=["mfcc", "hubert_shall", "hubert_fs", "mhubert", "c_hubert", "f_hubert", "w2v2_hf", "wavlm", "wavlm_shall"],
+        help="available models",
         default="mfcc",
     )
     parser.add_argument(
