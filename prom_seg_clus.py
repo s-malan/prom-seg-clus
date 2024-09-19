@@ -182,7 +182,7 @@ if __name__ == "__main__":
     np.random.seed(42)
 
     # ~~~~~~~~~~ Setup data ~~~~~~~~~~
-    data = data_process.Features(wav_dir=args.wav_dir, root_dir=args.feature_dir, model_name=args.model, layer=args.layer, data_dir=args.alignments_dir, extension=args.extension, alignment_format=args.align_format, num_files=args.sample_size, frames_per_ms=frame_len)
+    data = data_process.Features(wav_dir=args.wav_dir, root_dir=args.feature_dir, model_name=args.model, layer=args.layer, extension=args.extension, alignment_format=args.align_format, num_files=args.sample_size, frames_per_ms=frame_len)
 
     if args.speaker is not None:
         speakerlist = data.get_speakers(args.speaker)
