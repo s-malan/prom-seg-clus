@@ -122,34 +122,34 @@ class Features:
         self.frames_per_ms = frames_per_ms
         self.alignment_data = []
 
-    def sample_embeddings(self, speaker=None):
+    def sample_features(self, speaker=None):
         """
-        Randomly samples embeddings (and their waveforms) from the specified model and returns the file paths as a list.
+        Randomly samples features (and their waveforms) from the specified model and returns the file paths as a list.
 
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected embeddings
+            The object containing all information to find alignments for the selected features
         speaker : String
-            The code of the speaker to sample embeddings from (used for mostly for the Buckeye corpus)
+            The code of the speaker to sample features from (used for mostly for the Buckeye corpus)
 
         Return
         ------
-        embeddings_sample : list, list
-            List of file paths to the sampled embeddings and their corresponding waveforms
+        features_sample : list, list
+            List of file paths to the sampled features and their corresponding waveforms
         """
 
         if self.layer != -1:
             layer = 'layer_' + str(self.layer)
             if speaker is not None:
-                all_embeddings = sorted(glob(os.path.join(self.root_dir, self.model_name, layer, f'**/{speaker}*.npy'), recursive=True))
+                all_features = sorted(glob(os.path.join(self.root_dir, self.model_name, layer, f'**/{speaker}*.npy'), recursive=True))
             else:
-                all_embeddings = sorted(glob(os.path.join(self.root_dir, self.model_name, layer, "**/*.npy"), recursive=True))
+                all_features = sorted(glob(os.path.join(self.root_dir, self.model_name, layer, "**/*.npy"), recursive=True))
         else:
             if speaker is not None:
-                all_embeddings = sorted(glob(os.path.join(self.root_dir, self.model_name, f'**/{speaker}*.npy'), recursive=True))
+                all_features = sorted(glob(os.path.join(self.root_dir, self.model_name, f'**/{speaker}*.npy'), recursive=True))
             else:
-                all_embeddings = sorted(glob(os.path.join(self.root_dir, self.model_name, "**/*.npy"), recursive=True))
+                all_features = sorted(glob(os.path.join(self.root_dir, self.model_name, "**/*.npy"), recursive=True))
 
         if speaker is not None:
             all_wavs = sorted(glob(os.path.join(self.wav_dir, f'**/{speaker}*' + self.wav_format), recursive=True))
@@ -157,55 +157,55 @@ class Features:
             all_wavs = sorted(glob(os.path.join(self.wav_dir, "**/*" + self.wav_format), recursive=True))
 
         if self.num_files == -1: # sample all the data
-            return all_embeddings, all_wavs
+            return all_features, all_wavs
         
-        paired_sample = list(zip(all_embeddings, all_wavs))
+        paired_sample = list(zip(all_features, all_wavs))
         sample = random.sample(paired_sample, self.num_files)
-        embeddings_sample, wavs_sample = zip(*sample)
-        return embeddings_sample, wavs_sample
+        feature_sample, wavs_sample = zip(*sample)
+        return feature_sample, wavs_sample
 
-    def load_embeddings(self, files):
+    def load_features(self, files):
         """
-        Load the sampled embeddings from file paths
+        Load the sampled features from file paths
 
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected embeddings
+            The object containing all information to find alignments for the selected features
         files : list (String)
-            List of file paths to the sampled embeddings
+            List of file paths to the sampled features
 
         Return
         ------
-        embeddings : list
-            A list of embeddings loaded from the file paths
+        features : list
+            A list of features loaded from the file paths
         """
 
-        embeddings = []
+        features = []
 
         for file in files:
-            embedding = torch.from_numpy(np.load(file))
-            if len(embedding.shape) == 1: # if only one dimension, add a dimension
-                embeddings.append(embedding.unsqueeze(0))
+            feature = torch.from_numpy(np.load(file))
+            if len(feature.shape) == 1: # if only one dimension, add a dimension
+                features.append(feature.unsqueeze(0))
             else:
-                embeddings.append(embedding)
-        return embeddings
+                features.append(feature)
+        return features
     
     def normalize_features(self, features):
         """
-        Normalizes the feature embeddings to have a mean of 0 and a standard deviation of 1
+        Normalizes the features to have a mean of 0 and a standard deviation of 1
 
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected embeddings
+            The object containing all information to find alignments for the selected features
         features : numpy.ndarray
-            The feature embeddings to normalize
+            The features to normalize
 
         Returns
         -------
         normalized_features : numpy.ndarray
-            The normalized feature embeddings
+            The normalized features
         """
 
         stacked_features = torch.cat(features, dim=0) # concatenate all features into one tensor with size (sum_seq_len, feature_dim (channels))

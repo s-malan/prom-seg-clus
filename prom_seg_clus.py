@@ -42,16 +42,16 @@ def get_data(data, args, speaker):
         The landmarks (in frames) of the utterances.
     """
 
-    samples, wavs = data.sample_embeddings(speaker) # sample file paths from the speech features
+    samples, wavs = data.sample_features(speaker) # sample file paths from the speech features
        
     pca = None
     if args.model not in ["mfcc", "melspec"]:
         print('Fitting PCA')
         pca = PCA(n_components=250)
-        pca.fit(np.concatenate(data.load_embeddings(random.sample(samples, int(0.8*len(samples)))), axis=0))
+        pca.fit(np.concatenate(data.load_features(random.sample(samples, int(0.8*len(samples)))), axis=0))
 
     if len(samples) == 0:
-        print('No embeddings to segment, sampled a file with only one frame.')
+        print('No features to segment, sampled a file with only one frame.')
         exit()
     
     # get landmarks, lenths, and segments
@@ -82,8 +82,8 @@ def get_landmarks(data, args, wavs):
 
     Parameters
     ----------
-    data : 
-        The downsampled embeddings of the encoded utterances
+    data : Features
+        The data object, containing the features and the alignments.
     args : Namespace
         The arguments for the script.
     wavs : list (str)
@@ -182,7 +182,7 @@ if __name__ == "__main__":
     np.random.seed(42)
 
     # ~~~~~~~~~~ Setup data ~~~~~~~~~~
-    data = data_process.Features(wav_dir=args.wav_dir, root_dir=args.embeddings_dir, model_name=args.model, layer=args.layer, data_dir=args.alignments_dir, extension=args.extension, alignment_format=args.align_format, num_files=args.sample_size, frames_per_ms=frame_len)
+    data = data_process.Features(wav_dir=args.wav_dir, root_dir=args.feature_dir, model_name=args.model, layer=args.layer, data_dir=args.alignments_dir, extension=args.extension, alignment_format=args.align_format, num_files=args.sample_size, frames_per_ms=frame_len)
 
     if args.speaker is not None:
         speakerlist = data.get_speakers(args.speaker)
@@ -190,7 +190,7 @@ if __name__ == "__main__":
         speakerlist = [None]
 
     for speaker in tqdm(speakerlist, desc="Speaker"):
-        # ~~~~~~~~~~ Get data for all utterances without saving the embeddings ~~~~~~~~~~~
+        # ~~~~~~~~~~ Get data for all utterances without saving the features ~~~~~~~~~~~
         lexicon_builder, samples, wavs, landmarks = get_data(data, args, speaker)
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Cluster segment embeddings ~~~~~~~~~~~~~~~~~~~~~~~~~~

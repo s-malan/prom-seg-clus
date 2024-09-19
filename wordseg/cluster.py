@@ -69,7 +69,7 @@ class CLUSTER():
         """
 
         # sample the current utterance and downsample all possible segmentations
-        embeddings = self.data.load_embeddings([self.samples[i]])[0]
+        embeddings = self.data.load_features([self.samples[i]])[0]
 
         if self.pca is not None:
             embeddings = self.pca.transform(embeddings)
@@ -121,7 +121,7 @@ class CLUSTER():
         for i_utt, (sample, segment) in enumerate(zip(self.samples, self.segments)):
             downsampled_embedding = []
             if self.pca is not None:
-                embedding = self.pca.transform(self.data.load_embeddings([sample])[0])
+                embedding = self.pca.transform(self.data.load_features([sample])[0])
                 for a, b in segment:
                     if b > embedding.shape[0]: # if the segment is longer than the utterance, stop at last frame
                         if a < embedding.shape[0]:
@@ -134,7 +134,7 @@ class CLUSTER():
                         downsampled_embedding.append(embedding[a:b, :].mean(0))
                 embeddings.append(np.stack(downsampled_embedding))
             else:
-                embedding = self.data.load_embeddings([sample])[0]
+                embedding = self.data.load_features([sample])[0]
                 embeddings.append(subsample.downsample([embedding], [segment], n=10))            
 
         # normalize embedding (frame-wise)
