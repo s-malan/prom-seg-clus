@@ -16,7 +16,7 @@ from sklearn.preprocessing import StandardScaler
 
 class Features:
     """
-    The object containing all information to find alignments for the selected features.
+    The object containing all information of the selected features.
 
     Parameters
     ----------
@@ -57,7 +57,7 @@ class Features:
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected features
+            The object containing all information of the selected features
         speaker : String
             The code of the speaker to sample features from (used for mostly for the Buckeye corpus)
 
@@ -99,7 +99,7 @@ class Features:
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected features
+            The object containing all information of the selected features
         files : list (String)
             List of file paths to the sampled features
 
@@ -126,7 +126,7 @@ class Features:
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected features
+            The object containing all information of the selected features
         features : numpy.ndarray
             The features to normalize
 
@@ -152,7 +152,7 @@ class Features:
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected features
+            The object containing all information of the selected features
 
         Return
         ------
@@ -183,7 +183,7 @@ class Features:
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected features
+            The object containing all information of the selected features
         seconds : float or ndarray (float)
             The number of seconds (of audio) to convert to frames
 
@@ -202,7 +202,7 @@ class Features:
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected features
+            The object containing all information of the selected features
         frame_num : float
             The frame number (of features) to convert to seconds
 

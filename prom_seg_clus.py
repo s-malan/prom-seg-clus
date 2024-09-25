@@ -23,7 +23,7 @@ def get_data(data, args, speaker):
     Parameters
     ----------
     data : Features
-        The data object, containing the features and the alignments.
+        The data object, containing the features.
     args : Namespace
         The arguments for the script.
     speaker : list (str)
@@ -84,7 +84,7 @@ def get_landmarks(data, args, wavs):
     Parameters
     ----------
     data : Features
-        The data object, containing the features and the alignments.
+        The data object, containing the features.
     args : Namespace
         The arguments for the script.
     wavs : list (str)
@@ -187,7 +187,7 @@ if __name__ == "__main__":
     np.random.seed(42)
 
     # ~~~~~~~~~~ Setup data ~~~~~~~~~~
-    data = data_process.Features(wav_dir=args.wav_dir, root_dir=args.feature_dir, model_name=args.model, layer=args.layer, extension=args.extension, alignment_format=args.align_format, num_files=args.sample_size, frames_per_ms=frame_len)
+    data = data_process.Features(wav_dir=args.wav_dir, root_dir=args.feature_dir, model_name=args.model, layer=args.layer, extension=args.extension, num_files=args.sample_size, frames_per_ms=frame_len)
 
     if args.speaker is not None:
         speakerlist = data.get_speakers(args.speaker)

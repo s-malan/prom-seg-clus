@@ -24,7 +24,7 @@ class CLUSTER():
     Parameters
     ----------
     data : Features
-        The data object, containing the features and the alignments.
+        The data object, containing the features.
     samples : list
         The list of the sampled file paths to the utterances.
     segments : list of lists (of tuples)
