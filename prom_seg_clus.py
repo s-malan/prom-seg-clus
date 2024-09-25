@@ -69,7 +69,8 @@ def get_data(data, args, speaker):
     # K_max = 3000 # TODO 3000 for zrc mandarin
     # K_max = 29000 # TODO 29000 for zrc german
     # K_max = 3500 # TODO 3500 for zrc wolof
-    K_max = 13967 # TODO 13967 for librispeech
+    # K_max = 13967 # TODO 13967 for librispeech
+    K_max = args.k_max
 
     # load the utterance data into the lexicon builder
     lexicon_builder = cluster.CLUSTER(data, samples, segments, lengths, K_max, pca)
@@ -148,6 +149,11 @@ if __name__ == "__main__":
         help="root directory to save word boundaries.",
         default=None,
         type=Path,
+    )
+    parser.add_argument(
+        "k_max",
+        help="maximum number of clusters.",
+        type=int,
     )
     parser.add_argument(
         "--extension",

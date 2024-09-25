@@ -32,7 +32,7 @@ class Features:
         The format of the audio files.
         default: '.flac'
     num_files : int
-        The number of embeddings (utterances) to sample
+        The number of features (utterances) to sample
         default: -1
     frames_per_ms : int
         The number of frames a model processes per millisecond
@@ -152,7 +152,7 @@ class Features:
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected embeddings
+            The object containing all information to find alignments for the selected features
 
         Return
         ------
@@ -178,38 +178,38 @@ class Features:
 
     def get_frame_num(self, seconds):
         """
-        Convert seconds to feature embedding frame number
+        Convert seconds to feature frame number
 
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected embeddings
+            The object containing all information to find alignments for the selected features
         seconds : float or ndarray (float)
             The number of seconds (of audio) to convert to frames
 
         Return
         ------
         output : int
-            The feature embedding frame number corresponding to the given number of seconds 
+            The feature frame number corresponding to the given number of seconds 
         """
 
         return np.round(seconds / self.frames_per_ms * 1000) # seconds (= samples / sample_rate) / x ms per frame * 1000ms per second
 
     def get_sample_second(self, frame_num):
         """
-        Convert feature embedding frame number to seconds
+        Convert feature frame number to seconds
 
         Parameters
         ----------
         self : Class
-            The object containing all information to find alignments for the selected embeddings
+            The object containing all information to find alignments for the selected features
         frame_num : float
-            The frame number (of feature embeddings) to convert to seconds
+            The frame number (of features) to convert to seconds
 
         Return
         ------
         output : double
-            The number of seconds corresponding to the given feature embedding frame number
+            The number of seconds corresponding to the given feature frame number
         """
 
         return frame_num * self.frames_per_ms / 1000 # frame_num * x ms per frame / 1000ms per second
