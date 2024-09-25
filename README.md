@@ -1,8 +1,8 @@
 # Prominence Segmentation with Clustering for Word Discovery and Lexicon Learning
 
-This repository contains code that builds a lexicon on prominence-based word segments. The lexicon is built by clustering word segment embeddings found through manipulated input speech features. We use [FAISS](https://github.com/facebookresearch/faiss) K-means clustering, each word segment is assigned to the class centroid closest to its segment embedding. 
+[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2409.14486)
 
-Arxiv paper: [https://arxiv.org/abs/2409.14486](https://arxiv.org/abs/2409.14486)
+This repository contains code that builds a lexicon on prominence-based word segments. The lexicon is built by clustering word segment embeddings found through manipulated input speech features. We use [FAISS](https://github.com/facebookresearch/faiss) K-means clustering, each word segment is assigned to the class centroid closest to its segment embedding. 
 
 ## Preliminaries
 
