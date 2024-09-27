@@ -10,7 +10,7 @@ import random
 import numpy as np
 from tqdm import tqdm
 import faiss
-import subsample
+from wordseg import subsample
 
 class CLUSTER():
     """
