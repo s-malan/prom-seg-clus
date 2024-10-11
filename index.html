@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LinearVC samples</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5;
+            color:#333;
+            background-color:#fff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+/*            margin-bottom: 15px;*/
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+/*            margin-bottom: 15px;*/
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;  /* 42px */
+            font-weight: 300;
+            letter-spacing: -1px;
+            line-height: 1;
+/*            margin-bottom: 20px;*/
+        }
+
+        h2, h3 {
+            font-size: 25px;  /* 26px */
+            font-weight: 400;
+        }
+
+/*      
+        @media handheld, only screen and (max-width:480px) {
+            body { padding: 0; }
+        }
+*/
+
+        table {
+            display: block;
+            width: 100%;
+            border-collapse: collapse;
+            overflow: auto;
+        }
+
+        a{
+            color: #2a7ae2;
+            text-decoration: none
+        }
+        a:visited{
+            color: #1756a9
+        }
+        a:hover{
+            color: #333;
+            text-decoration: underline
+        }
+
+        .audio_smaller {
+            max-width: 210px;  /* 195px */
+        }
+
+/*        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400,700,italic&display=swap');*/
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:300,400,700,italic" rel="stylesheet">
+</head>
+
+<body>
+    <h1>LinearVC: Voice conversion with just linear regression</h1>
+
+    <p style="text-align: center">
+        <a href="https://www.kamperh.com/" target="_blank" rel="external noopener noreferrer">Herman Kamper</a> and <a href="https://scholar.google.com/citations?user=zCokvy8AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="external noopener noreferrer">Benjamin van Niekerk</a>
+    </p>
+    <p style="text-align: center">
+        [<a href="https://arxiv.org/abs/???" target="_blank" rel="external noopener noreferrer">arXiv</a>]
+        &ensp;
+        [<a href="github.com/???" target="_blank" rel="external noopener noreferrer">Code</a>]
+    </p>
+
+    <p>
+        This is a simple webpage layout. The title is centered, while the body text is aligned to the left. This is a simple webpage layout. The title is centered, while the body text is aligned to the left. Here I will add an abstract. And maybe the figure.
+    </p>
+
+    <h2>Samples from LibriSpeech</h2>
+
+    <p>This is a short paragraph.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="5" style="border-bottom:1px solid #e8e8e8; text-align: center">
+                Targets
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th></th>
+            <th style="text-align: center">2300</th>
+            <th style="text-align: center">237</th>
+            <th style="text-align: center">260</th>
+            <th style="text-align: center">1284</th>
+            <th style="text-align: center">1089</th>
+        </tr>
+
+        <tr>
+            <th style="text-align: center">Source</th>
+            <th>
+                <audio class="audio_smaller" name="2300" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/targets/2300.wav"></audio>
+            </th>
+            <th>
+                <audio class="audio_smaller" name="237" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/targets/237.wav"></audio>
+            </th>
+            <th>
+                <audio class="audio_smaller" name="260" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/targets/260.wav"></audio>
+            </th>
+            <th>
+                <audio class="audio_smaller" name="1284" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/targets/1284.wav"></audio>
+            </th>
+            <th>
+                <audio class="audio_smaller" name="1089" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/targets/1089.wav"></audio>
+            </th>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="5105" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5105-28240-0008/5105.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="2300" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5105-28240-0008/2300.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="237" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5105-28240-0008/237.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="260" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5105-28240-0008/260.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1284" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5105-28240-0008/1284.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1089" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5105-28240-0008/1089.wav"></audio>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="5683" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5683-32865-0004/5683.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="2300" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5683-32865-0004/2300.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="237" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5683-32865-0004/237.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="260" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5683-32865-0004/260.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1284" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5683-32865-0004/1284.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1089" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/5683-32865-0004/1089.wav"></audio>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="7729" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7729-102255-0017/7729.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="2300" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7729-102255-0017/2300.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="237" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7729-102255-0017/237.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="260" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7729-102255-0017/260.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1284" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7729-102255-0017/1284.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1089" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7729-102255-0017/1089.wav"></audio>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="3729" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/3729-6852-0023/3729.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="2300" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/3729-6852-0023/2300.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="237" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/3729-6852-0023/237.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="260" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/3729-6852-0023/260.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1284" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/3729-6852-0023/1284.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1089" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/3729-6852-0023/1089.wav"></audio>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="7021" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7021-85628-0015/7021.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="2300" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7021-85628-0015/2300.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="237" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7021-85628-0015/237.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="260" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7021-85628-0015/260.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1284" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7021-85628-0015/1284.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1089" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/7021-85628-0015/1089.wav"></audio>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="4446" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/4446-2273-0021/4446.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="2300" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/4446-2273-0021/2300.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="237" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/4446-2273-0021/237.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="260" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/4446-2273-0021/260.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1284" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/4446-2273-0021/1284.wav"></audio>
+            </td>
+            <td style="text-align: center">
+                <audio class="audio_smaller" name="1089" controls controlsList="nodownload noplaybackrate" preload="metadata" src="https://f003.backblazeb2.com/file/knn-vc/unseen/4446-2273-0021/1089.wav"></audio>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <h2>Samples using parallel utterances from VCTK</h2>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th style="text-align: center">Source</th>
+            <th style="text-align: center">Target</th>
+            <th style="text-align: center">LinearVC</th>
+            <th style="text-align: center">kNN-VC</th>
+            <th style="text-align: center">Phoneme hallucinator</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/herman_abstract.16khz.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/reference_partial.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/k=4.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/k=4.clean.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/k=4.clean.wav" /></audio>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/stutter/herman_hons_abstract.16khz.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/harry_potter_stutter.16khz.mp3" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/stutter/final2_k=4.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/stutter/final2_k=4.voicefixer.wav" /></audio>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/herman_abstract.16khz.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/harry_potter_stutter.16khz.mp3" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/final_k=4.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/final_k=4.voicefixer.wav" /></audio>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/stutter_input.16khz.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/stutter_reference1.16khz.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/1_k=4.wav" /></audio>
+                </td>
+                <td style="text-align: center">
+                    <audio class="audio_smaller" controls controlsList="nodownload noplaybackrate" preload="metadata"><source src="/sacair2023-knnvc-demo/assets/img/1_k=4.clean.wav" /></audio>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+</body>
+
+</html>
