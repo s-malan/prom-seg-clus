@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>LinearVC samples</title>
+    <title>Unsup Word Disc</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -73,19 +73,28 @@
 </head>
 
 <body>
-    <h1>LinearVC: Voice conversion with just linear regression</h1>
+    <h1>Unsupervised Word Discovery: Prominence Segmentation with Clustering and ES-KMeans+</h1>
 
     <p style="text-align: center">
-        <a href="https://www.kamperh.com/" target="_blank" rel="external noopener noreferrer">Herman Kamper</a> and <a href="https://scholar.google.com/citations?user=zCokvy8AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="external noopener noreferrer">Benjamin van Niekerk</a>
+       <a>Simon Malan</a>,
+        <a href="https://scholar.google.com/citations?user=zCokvy8AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="external noopener noreferrer">Benjamin van Niekerk</a>,
+        <a href="https://www.kamperh.com/" target="_blank" rel="external noopener noreferrer">Herman Kamper</a>
     </p>
     <p style="text-align: center">
-        [<a href="https://arxiv.org/abs/???" target="_blank" rel="external noopener noreferrer">arXiv</a>]
+        [<a href="https://arxiv.org/abs/2409.14486" target="_blank" rel="external noopener noreferrer">arXiv</a>]
         &ensp;
         [<a href="github.com/???" target="_blank" rel="external noopener noreferrer">Code</a>]
     </p>
 
     <p>
-        This is a simple webpage layout. The title is centered, while the body text is aligned to the left. This is a simple webpage layout. The title is centered, while the body text is aligned to the left. Here I will add an abstract. And maybe the figure.
+        <b>Abstract:</b> 
+        We look at the long-standing problem of segmenting unlabeled speech into word-like segments and clustering these into a lexicon. 
+        Several previous methods use a scoring model coupled with dynamic programming to find an optimal segmentation. 
+        Here we propose a much simpler strategy: we predict word boundaries using the dissimilarity between adjacent self-supervised features, 
+        then we cluster the predicted segments to construct a lexicon. 
+        For a fair comparison, we update the older ES-KMeans dynamic programming method with better features and boundary constraints. 
+        On the five-language ZeroSpeech benchmarks, our simple approach gives similar state-of-the-art results compared to the new ES-KMeans+ method, 
+        while being almost five times faster.
     </p>
 
     <h2>Samples from LibriSpeech</h2>
