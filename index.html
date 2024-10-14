@@ -105,7 +105,7 @@
         while being almost five times faster.
     </p>
 
-    <h2>Prominence-Based Unsupervised Word Segmentation</h2>
+    <h2>Prominence-Based Word Segmentation</h2>
 
     <p>
         First we looks at the word segmentation step used in both Prom. Seg. Clus. and ES-KMeans+.
@@ -115,10 +115,19 @@
 
     <figure>
         <img src="/prom-seg-clus/assets/promseg.png" alt="PromWordSeg"/>
+        <figcaption>Fig.1: An example of word boundaries from the prominence-
+            based approach of Pasad et al. The red line is the dissimilarity
+            curve between adjacent frames, which is smoothed to produce
+            the white line. The crosses are the predicted boundaries. The
+            black vertical lines are the ground truth boundaries.</figcaption>
     </figure>
 
     <p>
-        The code for the...
+        Figure 1 shows an example of the prominence based approach.
+        The code for this step can be found in our GitHub repository: <a href="https://github.com/s-malan/prom-wordseg" target="_blank"
+        rel="noopener noreferrer">https://github.com/s-malan/prom-wordseg</a>.
+        The boundaries can be tuned using the parameters (distance, window_size, prominence) described in the README.
+        These boundaries serve as input to the lexicon building step described next.
     </p>
 
     <br>
@@ -126,13 +135,54 @@
     <h2>Building a Lexicon</h2>
 
     <p>
-        Second...
+        Using the prominence-based word boundaries, we can build a lexicon by simply clustering these boundaries (like in Prom. Seg. Clus.)
+        or we can use dynamic programming to sub-select boundaries which are then used to build the lexicon (like in ES-KMeans+).
     </p>
 
     <figure>
-       <img src="/prom-seg-clus/assets/lexicon.png" width="1000" alt="LexiconBuild" />
+       <img src="/prom-seg-clus/assets/lexicon.png" alt="LexiconBuild" />
+        <figcaption>Fig.2: Our lexicon building step. After extracting frame-level
+            features (a), PCA dimensionality reduction is applied (b). For
+            each segment from the prominence-based approach (Fig. 1),
+            an averaged embedding is obtained (c). These are K-means
+            clustered (d) to get a lexicon.</figcaption>
     </figure>
 
+    <p>
+        Figure 2 shows the lexicon building step.
+        Both Prom. Seg. Clus. and ES-KMeans+ use this step. Prom. Seg. Clus. directly builds a lexicon like in Figure 2 using the 
+        prominence-based boundaries of Figure 1, the full codebase can be found in our GitHub repository: 
+        <a href="https://github.com/s-malan/prom-seg-clus" target="_blank" rel="noopener noreferrer">https://github.com/s-malan/prom-seg-clus</a>.
+        ES-KMeans+ also builds a lexicon like in Figure 2 but, after extracting prominence-based word boundaries like in Figure 1,
+        it iteratively clusters and re-segments the utterance to select a near-optimal subset of word-like boundaries with its corresponding lexicon.
+        The full codebase for ES-KMeans+ can be found in our GitHub repository: <a href="https://github.com/s-malan/es-kmeans-plus" target="_blank"
+        rel="noopener noreferrer">https://github.com/s-malan/es-kmeans-plus</a>.
+    </p>
+
+    <br>
+
+    <h2>Evaluation</h2>
+
+    <p>
+        When using Track 2 of the ZeroSpeech Challenge's datasets downloaded from <a href="https://download.zerospeech.com" target="_blank"
+        rel="noopener noreferrer">https://download.zerospeech.com</a>, the ZeroSpeech toolkit <a href="https://github.com/zerospeech/benchmarks" target="_blank"
+        rel="noopener noreferrer">https://github.com/zerospeech/benchmarks</a> can be used for evaluation.
+        When working with <a href="https://www.openslr.org/12" target="_blank" rel="noopener noreferrer">LibriSpeech</a> or 
+        <a href="https://buckeyecorpus.osu.edu/" target="_blank" rel="noopener noreferrer">BuckEye</a>, our evaluation scripts can be used, found in our
+        GitHub repository: <a href="https://github.com/s-malan/evaluation" target="_blank" rel="noopener noreferrer">https://github.com/s-malan/evaluation</a>.
+    </p>
+
+    <figure>
+       <img src="/prom-seg-clus/assets/results.png" alt="Results" />
+        <figcaption>Table I: Performance (%) of prominence segmentation with clustering on English HuBERT, and other state-of-the-art
+        methods for word segmentation and lexicon building on Track 2 of the ZeroSpeech Challenge.</figcaption>
+    </figure>
+
+    <p>
+        Table I shows the results we get on the five-language ZeroSpeech Challenge.
+        For more results and their discussions please refer to our paper. 
+    </p>
+    
     <br>
 
 </body>
