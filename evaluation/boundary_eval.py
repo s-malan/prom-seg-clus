@@ -148,8 +148,7 @@ def eval_boundaries(
             and abs(prediction[-1] - ground_truth[-1]) <= tolerance
         ): # if the last boundary is within the tolerance, delete it since it would have hit
             prediction = prediction[:-1]
-            if len(ground_truth) > 0: # Remove the last boundary of the reference if there is more than one boundary
-                ground_truth = ground_truth[:-1]
+            ground_truth = ground_truth[:-1]
         # this helps when the segmentation algo does not automatically predict a boundary at the end of the utterance
 
         n_seg += len(prediction)
@@ -233,48 +232,6 @@ def eval_token_boundaries(
                     if strict: break
 
     return n_tokens_seg, n_tokens_ref, n_tokens_hit
-
-def split_utterance(
-    seg: List[float], ref: textgrids.Interval, tolerance: Union[int, float]
-) -> Tuple[List[List[Union[int, float]]], List[List[Union[int, float]]]]:
-    """
-    Split segmentation and reference into utterances based on silences in ground-truth reference intervals.
-    Output format: no utterance onset boundary, intermediate boundaries, utterance offset boundary.
-
-    Parameters
-    ----------
-    seg : list of float
-        The segmentation boundaries.
-    ref : textgrids.Interval
-        The reference word intervals.
-    tolerance : numerical
-        The number of frames or seconds within which a seg boundary can hit a ref boundary.
-        If `int`, interpreted as number of frames; if `float`, interpreted as number of seconds.
-    
-    Return
-    ------
-    output : (list of list of float, list of list of float)
-        The segmentation and reference boundaries split into utterances.
-    """
-    
-    ref_out = [
-        list(ref_utt)
-        for k, ref_utt in itertools.groupby(
-            ref, lambda x: x.text != ""
-        )
-        if k
-    ]
-
-    seg_out = []
-    for ref_utt in ref_out:
-        ref_utt_onset = ref_utt[0].xmin + tolerance
-        ref_utt_offset = ref_utt[-1].xmax - tolerance
-        seg_out.append([
-            s for s in seg if ref_utt_onset < s < ref_utt_offset
-        ])
-        seg_out[-1].append(ref_utt[-1].xmax)
-        
-    return seg_out, [[float(interval.xmax) for interval in ref_utt] for ref_utt in ref_out]
 
 def get_frame_num(
     seconds: np.ndarray, ms_per_frame: int
